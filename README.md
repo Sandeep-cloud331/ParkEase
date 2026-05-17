@@ -10,21 +10,6 @@ Designed for scalability, fault tolerance, and real-time parking workflows.
 ![Docker](https://img.shields.io/badge/Docker-Enabled-blue)
 ![Render](https://img.shields.io/badge/Deploy-Render-purple)
 
----
-
-# Live Links
-
-- **API Gateway:**  
-  https://parkease-api-gateway.onrender.com
-
-- **Swagger UI:**  
-  https://parkease-api-gateway.onrender.com/swagger-ui.html
-
-- **Frontend:**  
-  https://parkease-frontend-zeta.vercel.app
-
----
-
 # Architecture
 
 ParkEase follows a **microservices architecture** with an **API Gateway** as the single entry point.
