@@ -2,6 +2,8 @@ server:
   port: 8086
 
 spring:
+  config:
+    import: optional:file:.env[.properties],optional:file:../.env[.properties]
   application:
     name: analytics-service
   main:
@@ -9,8 +11,8 @@ spring:
 
   datasource:
     url: jdbc:postgresql://localhost:5432/analytics_db
-    username: ${POSTGRES_USER:postgres}
-    password: ${POSTGRES_PASSWORD:Mathura@123}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
     hikari:
       maximum-pool-size: 5
       minimum-idle: 2
@@ -26,8 +28,8 @@ spring:
   rabbitmq:
     host: localhost
     port: 5672
-    username: ${RABBITMQ_USER:guest}
-    password: ${RABBITMQ_PASSWORD:guest}
+    username: ${RABBITMQ_USER}
+    password: ${RABBITMQ_PASSWORD}
     listener:
       simple:
         retry:
@@ -50,7 +52,7 @@ springdoc:
     tags-sorter: alpha
 
 jwt:
-  secret: ${JWT_SECRET:MySuperLongJwtSecretKeyForLocalDevelopmentOnly2026MakeItAtLeast64CharsLong!}
+  secret: ${JWT_SECRET}
 
 services:
   payment-url: http://localhost:8084

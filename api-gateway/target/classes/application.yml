@@ -2,6 +2,8 @@ server:
   port: 8080
 
 spring:
+  config:
+    import: optional:file:.env[.properties],optional:file:../.env[.properties]
   application:
     name: api-gateway
   main:
@@ -48,7 +50,7 @@ spring:
                 fallbackUri: forward:/fallback/analytics
 
 jwt:
-  secret: ${JWT_SECRET:MySuperLongJwtSecretKeyForLocalDevelopmentOnly2026MakeItAtLeast64CharsLong!}
+  secret: ${JWT_SECRET}
 
 eureka:
   client:

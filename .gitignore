@@ -9,6 +9,7 @@ target/
 *.iml
 .vscode/
 *.swp
+.junie/
 
 # Environment
 .env
@@ -23,3 +24,8 @@ Thumbs.db
 
 # Spring Boot
 spring-shell.log
+
+# Local-only files
+scripts/render_project_pdf.py
+
+test/

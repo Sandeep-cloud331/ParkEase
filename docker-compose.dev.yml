@@ -78,7 +78,10 @@ services:
       - "15672:15672"
 
   eureka-server:
-    build: ./eureka-server
+    build:
+      context: ./eureka-server
+      args:
+        - SKIP_TESTS=true
     container_name: parkease-eureka
     restart: unless-stopped
     ports:
@@ -87,7 +90,10 @@ services:
       SPRING_PROFILES_ACTIVE: docker
 
   auth-service:
-    build: ./auth-service
+    build:
+      context: ./auth-service
+      args:
+        - SKIP_TESTS=true
     container_name: parkease-auth
     restart: unless-stopped
     ports:
@@ -108,7 +114,10 @@ services:
     mem_limit: 320m
 
   parking-service:
-    build: ./parking-service
+    build:
+      context: ./parking-service
+      args:
+        - SKIP_TESTS=true
     container_name: parkease-parking
     restart: unless-stopped
     ports:
@@ -128,7 +137,10 @@ services:
     mem_limit: 320m
 
   booking-service:
-    build: ./booking-service
+    build:
+      context: ./booking-service
+      args:
+        - SKIP_TESTS=true
     container_name: parkease-booking
     restart: unless-stopped
     ports:
@@ -148,7 +160,10 @@ services:
     mem_limit: 320m
 
   payment-service:
-    build: ./payment-service
+    build:
+      context: ./payment-service
+      args:
+        - SKIP_TESTS=true
     container_name: parkease-payment
     restart: unless-stopped
     ports:
@@ -168,7 +183,10 @@ services:
     mem_limit: 256m
 
   notification-service:
-    build: ./notification-service
+    build:
+      context: ./notification-service
+      args:
+        - SKIP_TESTS=true
     container_name: parkease-notification
     restart: unless-stopped
     ports:
@@ -192,7 +210,10 @@ services:
     mem_limit: 224m
 
   analytics-service:
-    build: ./analytics-service
+    build:
+      context: ./analytics-service
+      args:
+        - SKIP_TESTS=true
     container_name: parkease-analytics
     restart: unless-stopped
     ports:
@@ -210,7 +231,10 @@ services:
     mem_limit: 224m
 
   api-gateway:
-    build: ./api-gateway
+    build:
+      context: ./api-gateway
+      args:
+        - SKIP_TESTS=true
     container_name: parkease-gateway
     restart: unless-stopped
     ports:

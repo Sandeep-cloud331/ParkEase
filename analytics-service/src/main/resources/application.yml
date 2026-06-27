@@ -1,5 +1,5 @@
 server:
-  port: 8086
+  port: ${PORT:8086}
 
 spring:
   config:
@@ -10,9 +10,9 @@ spring:
     lazy-initialization: true
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/analytics_db
-    username: ${POSTGRES_USER}
-    password: ${POSTGRES_PASSWORD}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/analytics_db}
+    username: ${SPRING_DATASOURCE_USERNAME:${POSTGRES_USER:postgres}}
+    password: ${SPRING_DATASOURCE_PASSWORD:${POSTGRES_PASSWORD:}}
     hikari:
       maximum-pool-size: 5
       minimum-idle: 2
@@ -26,10 +26,13 @@ spring:
         format_sql: true
 
   rabbitmq:
-    host: localhost
-    port: 5672
-    username: ${RABBITMQ_USER}
-    password: ${RABBITMQ_PASSWORD}
+    host: ${SPRING_RABBITMQ_HOST:localhost}
+    port: ${SPRING_RABBITMQ_PORT:5672}
+    username: ${SPRING_RABBITMQ_USERNAME:${RABBITMQ_USER:guest}}
+    password: ${SPRING_RABBITMQ_PASSWORD:${RABBITMQ_PASSWORD:guest}}
+    virtual-host: ${SPRING_RABBITMQ_VHOST:/}
+    ssl:
+      enabled: ${SPRING_RABBITMQ_SSL_ENABLED:false}
     listener:
       simple:
         retry:
@@ -40,7 +43,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
   instance:
     prefer-ip-address: true
 
@@ -55,7 +58,7 @@ jwt:
   secret: ${JWT_SECRET}
 
 services:
-  payment-url: http://localhost:8084
+  payment-url: ${PAYMENT_SERVICE_URL:http://localhost:8084}
 
 management:
   endpoints:
